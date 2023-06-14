@@ -20,11 +20,7 @@
 
     <script>
         let compMove;
-        let score = {
-            Wins: 0,
-            losses: 0,
-            ties: 0
-        };
+        let score = JSON.parse(localStorage.getItem('score'));  // calling out the saved items and converting from JSON to standard Javascript Object syntax.
 
         function pickCompMove(){
             const randNum = Math.random();
@@ -65,6 +61,8 @@
             if (result === 'Won') score.Wins += 1;
             else if (result === 'Lost') score.losses += 1;
             else if (result === 'tie') score.ties += 1;
+
+            localStorage.setItem('score', JSON.stringify(score)); // saving the scores permenantly. localStorage can only take strings so implementing stringify() on score object.
 
             alert(`You picked ${playerMove}. Computer picked ${compMove}. ${result}
 Wins: ${score.Wins}, Loses: ${score.losses}, Ties: ${score.ties}`);
