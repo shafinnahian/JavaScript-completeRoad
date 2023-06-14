@@ -18,9 +18,26 @@
         playGame('Scissors');
     ">Scissors</button>
 
+    <button onclick="
+    score.Wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+
+    localStorage.removeItem('score');
+
+    alert(`Score streak has been reset.`)
+    ">Reset Score</button>
     <script>
         let compMove;
         let score = JSON.parse(localStorage.getItem('score'));  // calling out the saved items and converting from JSON to standard Javascript Object syntax.
+
+        if (score === null){
+            score = {
+                Wins: 0,
+                losses: 0,
+                ties : 0
+            };
+        }
 
         function pickCompMove(){
             const randNum = Math.random();
