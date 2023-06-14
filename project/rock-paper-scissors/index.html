@@ -29,15 +29,20 @@
     ">Reset Score</button>
     <script>
         let compMove;
-        let score = JSON.parse(localStorage.getItem('score'));  // calling out the saved items and converting from JSON to standard Javascript Object syntax.
-
-        if (score === null){
-            score = {
+        let score = JSON.parse(localStorage.getItem('score')) || {
                 Wins: 0,
                 losses: 0,
                 ties : 0
-            };
-        }
+            };  // calling out the saved items and converting from JSON to standard Javascript Object syntax.
+                // || works as a default condition, if first half is false we will get to the next part, otherwise the first part. truthy || truthy or falsy || truthy.
+
+        // if (score === null){
+        //     score = {
+        //         Wins: 0,
+        //         losses: 0,
+        //         ties : 0
+        //     };
+        // }    //kept for reference of the above part
 
         function pickCompMove(){
             const randNum = Math.random();
