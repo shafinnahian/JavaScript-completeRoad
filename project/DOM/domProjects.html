@@ -41,6 +41,8 @@
                 // console.log(typeof cost);
             }
 
+            cost = Math.round(cost);
+            
             document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
         }
         function subscribe(){
