@@ -4,25 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Project</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .subscribe-button {
+            border: none;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+
+            padding: 10px 15px 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+
+            margin-bottom: 30px;
+        }
+        .is-subscribed{
+            background-color: rgb(240, 240, 240);
+            color: black;
+        }
+        .cost-input{
+            font-size: 15px;
+            padding: 10px 10px 10px 10px;
+        }
+        .calculate-button{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 13px;
+            border-radius: 06px;
+            cursor: pointer;
+        }
+        .Amazon{
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
     <p>Youtube Subscribe Button
     </p>
     <button onclick="
         subscribe();
-    " class="js-subsribe-button">Subscribe</button>
+    " class="js-subsribe-button subscribe-button">Subscribe</button>
 
-    <p>Amazon Shipping Calculator</p>
-    <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+    <div class="Amazon">
+        <p>Amazon Shipping Calculator</p>
+        <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
+            handleCostKeyDown(event);
+        ">
+        <button onclick="
+            caclulateTotal();
+        " class = "calculate-button">Calculate</button>
+        <p class = "js-total-cost"></p>
+    
+    </div>
+
+    <!-- <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
         handleCostKeyDown(event);
     ">
     <button onclick="
         caclulateTotal();
-    ">Calculate</button>
-    <p class = "js-total-cost"></p>
+    " class = "calculate-button">Calculate</button>
+    <p class = "js-total-cost"></p> -->
 
     <p>Rock Paper Scissors:</p>
-    <a href="rockPaperScissorsDOM.html">Click here</a>
+    <a href="../DOM/rockPaperScissorsDOM.html">Click here</a>
 
     <script>
         function handleCostKeyDown(event){
@@ -49,9 +98,11 @@
             const buttonElement = document.querySelector('.js-subsribe-button');
 
             if (buttonElement.innerHTML === 'Subscribe') {
-                buttonElement.innerHTML = 'Subscribed'
+                buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('is-subscribed');
             } else {
                 buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
             }
         }
     </script>
