@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Exercises</title>
+</head>
+<body>
+    <button onclick="
+        changeButton();
+        " class = "button9A">9a. Ohayo!</button>
+
+    <p>9c. Head or Tails?</p>
+    <button onclick="
+    playGame('head');
+    " class="head">head</button>
+    <button onclick="
+    playGame('tails');
+    " class="tails">tails</button>
+    <p class="js-score"></p>
+    <p class = "js-move"></p>
+    <button onclick="
+    score.win = 0;
+    score.loss = 0;
+
+    localStorage.removeItem('score');
+    updateScore();
+
+    alert(`Score has reset`);
+    ">Reset</button>
+
+    <p>9d. Take input and show it</p>
+    <input placeholder="What's your name?" class="js-input" onkeydown="
+    // handleCostKeyDown(event);
+        const inputElement = document.querySelector('.js-input');
+        document.querySelector('.js-show-output')
+            .innerHTML = inputElement.value;
+
+        // handleCostKeyDown(event);
+    ">
+    <p class="js-show-output"></p>
+
+    <script>
+        function changeButton(){
+            const word = document.querySelector('.button9A');
+
+            if (word.innerHTML === '9a. Ohayo!'){
+                word.innerHTML = '9b. Changed!';
+            } else {
+                word.innerHTML = '9a. Ohayo!';
+            }
+        }
+
+        function updateScore(){
+            document.querySelector('.js-score')
+                .innerHTML = `Result: ${result}. Win: ${score.win}. Loss: ${score.loss}`;
+        }
+
+        let compMove;
+        function compPickMove(){
+            let num = Math.random();
+
+            if (num > 0 && num < 1/2) {
+                compMove = 'head';
+            }
+            else if (num < 1 && num > 1 / 2) {
+                compMove = 'tails';
+            }
+        }
+
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            win : 0,
+            loss : 0
+        };
+
+        let result = 'null';
+        function playGame(playerMove){
+            compPickMove();
+
+            if (playerMove === 'head'){
+                if (compMove === 'tails') result = 'lose';
+                else result = 'win';
+            } else {
+                if (compMove === 'head') result = 'lose';
+                else result = 'win';
+            }
+
+            if (result === 'win') score.win += 1;
+            else score.loss += 1;
+
+            localStorage.setItem('score',JSON.stringify(score));
+            
+            console.log(document.querySelector('.js-move')
+                .innerHTML = `You: ${playerMove} & Comp: ${compMove}`);
+
+            console.log(updateScore());
+        }
+
+        // function handleCostKeyDown(event){
+        //     if (event.key === 'Enter'){
+        //         const inputName = document.querySelector('.js-input');
+
+        //         let name = inputName.value;
+
+        //         document.querySelector('.js-show-output')
+        //             .innerHTML = `${name}`;
+        //     }
+        // }
+    </script>
+</body>
+</html>
