@@ -1,0 +1,32 @@
+.css-digit{
+    background-color: rgb(51, 51, 51);
+    color: white;
+
+    border: none;
+    border-radius: 60px;
+
+    padding: 30px;
+    font-size: 20px;
+}
+
+.css-symbols{
+    background-color: rgb(254, 160, 10);
+    color: white;
+
+    border: none;
+    border-radius: 60px;
+
+    padding: 30px;
+    font-size: 20px;
+}
+
+.css-calculation{
+    font-size: 50px;
+    margin-left: 20px;
+
+    color: white;
+}
+
+body{
+    background-color: black;
+}
