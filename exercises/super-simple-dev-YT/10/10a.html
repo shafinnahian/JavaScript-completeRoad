@@ -48,7 +48,14 @@
             border-radius: 10px;
             cursor: pointer;
         }
+
+        .is-toggled {
+        background-color: black;
+        color: white;
+      }
     </style>
+
+    <link rel="stylesheet" href="10f.css">
 </head>
 <body>
     <button class="button-cart">Add to Cart</button>
@@ -58,28 +65,27 @@
         <button class="Schedule-later">Schedule for later</button>
     </div>
 
-    <button class="js-button-CSS js-button" onclick="
+    <button class="js-button-CSS js-button-b" onclick="
     classChecker();
     ">Test</button>
     <p></p>
-    <div class="gaming-music-tech">
-        <button class="js-colorChanger css-gaming-music-tech" onclick="
-        changeColor();
-        ">Gaming</button>
+    <button class="toggle-button js-button" onclick="
+      toggleButton('.js-button');
+    ">Gaming</button>
 
-        <button class="js-colorChanger css-gaming-music-tech" onclick="
-        changeColor();
-        ">Music</button>
+    <button class="toggle-button js-button-2" onclick="
+      toggleButton('.js-button-2');
+    ">Music</button>
 
-        <button class="js-colorChanger css-gaming-music-tech" onclick="
-        changeColor();
-        ">Tech</button>
-        
-    </div>
+    <button class="toggle-button js-button-3" onclick="
+      toggleButton('.js-button-3');
+    ">Tech</button>
+
+    <script src="10f.js"></script>
 
     <script>
         function classChecker(){
-            let JButton =  document.querySelector('.js-button');
+            let JButton =  document.querySelector('.js-button-b');
 
             if (JButton.innerHTML === 'Test'){
                 JButton.innerHTML = 'Tested';
@@ -88,22 +94,6 @@
                 JButton.innerHTML = 'Test';
                 JButton.classList.remove('.js-button');
             }
-        }
-
-        let colorToggle = true;
-        
-        function changeColor() {
-            let JButton = document.querySelector('.gaming-music-tech-button button');
-            
-            if (colorToggle) {
-                JButton.style.backgroundColor = 'Black';
-                JButton.style.color = 'White';
-            } else {
-                JButton.style.backgroundColor = 'antiquewhite';
-                JButton.style.color = 'Black';
-            }
-            
-            colorToggle = !colorToggle;
         }
     </script>
 </body>
