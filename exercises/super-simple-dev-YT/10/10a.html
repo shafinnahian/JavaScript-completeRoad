@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise: 10</title>
+    <style>
+        .button-cart{
+            background-color: orange;
+            border: none;
+            border-radius: 30px;
+
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .b-10 button{
+            border: none;
+            border-radius: 10px;
+
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .Request-now{
+            background-color: black;
+            color: white;
+        }
+        .js-button-CSS{
+            margin-top: 20px;
+
+            padding: 10px 20px;
+
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+
+            background-color: rgb(230, 230, 230);
+        }
+
+        .css-gaming-music-tech{
+            background-color: antiquewhite;
+
+            margin-top: 20px;
+
+            padding: 10px 20px;
+
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="button-cart">Add to Cart</button>
+    <p></p>
+    <div class="b-10">
+        <button class="Request-now">Request Now</button>
+        <button class="Schedule-later">Schedule for later</button>
+    </div>
+
+    <button class="js-button-CSS js-button" onclick="
+    classChecker();
+    ">Test</button>
+    <p></p>
+    <div class="gaming-music-tech">
+        <button class="js-colorChanger css-gaming-music-tech" onclick="
+        changeColor();
+        ">Gaming</button>
+
+        <button class="js-colorChanger css-gaming-music-tech" onclick="
+        changeColor();
+        ">Music</button>
+
+        <button class="js-colorChanger css-gaming-music-tech" onclick="
+        changeColor();
+        ">Tech</button>
+        
+    </div>
+
+    <script>
+        function classChecker(){
+            let JButton =  document.querySelector('.js-button');
+
+            if (JButton.innerHTML === 'Test'){
+                JButton.innerHTML = 'Tested';
+                JButton.classList.add('.js-button');
+            } else {
+                JButton.innerHTML = 'Test';
+                JButton.classList.remove('.js-button');
+            }
+        }
+
+        let colorToggle = true;
+        
+        function changeColor() {
+            let JButton = document.querySelector('.gaming-music-tech-button button');
+            
+            if (colorToggle) {
+                JButton.style.backgroundColor = 'Black';
+                JButton.style.color = 'White';
+            } else {
+                JButton.style.backgroundColor = 'antiquewhite';
+                JButton.style.color = 'Black';
+            }
+            
+            colorToggle = !colorToggle;
+        }
+    </script>
+</body>
+</html>
