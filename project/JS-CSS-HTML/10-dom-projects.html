@@ -40,6 +40,9 @@
         .Amazon{
             margin-bottom: 30px;
         }
+        .is-Toggled{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -85,14 +88,20 @@
 
             let cost = Number(inputElem.value);
 
-            if (cost < 40){
+            if (cost < 40 && cost >= 0){
+                document.querySelector('.js-total-cost').classList.remove('is-Toggled');
+                
                 cost = cost + 10;
-                // console.log(typeof cost);
+                cost = Math.round(cost);
+                document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+            } else if (cost < 0) {
+                document.querySelector('.js-total-cost').classList.add('is-Toggled');
+                document.querySelector('.js-total-cost').innerHTML = `Error: Cost cannot be less than zero`;
+            } else if (cost >= 40){
+                cost = Math.round(cost);
+                document.querySelector('.js-total-cost').innerHTML = `$Free shipping! Total cost: ${cost}`;
             }
 
-            cost = Math.round(cost);
-            
-            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
         }
         function subscribe(){
             const buttonElement = document.querySelector('.js-subsribe-button');
